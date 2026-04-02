@@ -1,0 +1,22 @@
+# Django i18n — Turkish translations
+#
+# To update:
+#   uv run python manage.py makemessages -l tr
+#   uv run python manage.py compilemessages
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: tr\n"
+
+msgid "Welcome to the application."
+msgstr "Uygulamaya hoş geldiniz."
+
+msgid "User registered successfully."
+msgstr "Kullanıcı başarıyla kaydedildi."
+
+msgid "Password updated."
+msgstr "Şifre güncellendi."
+
+msgid "Invalid credentials."
+msgstr "Geçersiz kimlik bilgileri."

@@ -1,0 +1,45 @@
+{
+  "name": "python-django",
+  "displayName": "Django",
+  "description": "Django web framework with ORM, admin panel, REST API, and template engine",
+  "category": "fullstack",
+  "language": "python",
+  "framework": "django",
+  "stack": ["python", "django", "django-rest-framework", "postgresql"],
+  "features": ["orm", "admin-panel", "rest-api", "authentication", "migrations", "templates"],
+  "commands": {
+    "dev": "python manage.py runserver",
+    "build": "python manage.py collectstatic",
+    "test": "python manage.py test",
+    "lint": "ruff check ."
+  },
+  "packageManager": "pip",
+  "ci": {
+    "workflowTemplate": "python-django",
+    "runner": "ubuntu-latest",
+    "runtime": {
+      "name": "python",
+      "version": "3.12",
+      "setup": "actions/setup-python@v5",
+      "cache": "pip"
+    },
+    "services": {
+      "postgres": {
+        "image": "postgres:16",
+        "env": {
+          "POSTGRES_USER": "test",
+          "POSTGRES_PASSWORD": "test",
+          "POSTGRES_DB": "test_db"
+        },
+        "ports": ["5432:5432"],
+        "options": "--health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5"
+      }
+    },
+    "steps": {
+      "install": "pip install -r requirements.txt",
+      "build": "python manage.py collectstatic --noinput",
+      "test": "python manage.py test",
+      "lint": "ruff check ."
+    }
+  }
+}
